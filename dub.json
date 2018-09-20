@@ -1,0 +1,23 @@
+{
+	"name": "skelton",
+	"targetName": "isucon.bin",
+	"authors": [
+		"Hiroki Noda"
+	],
+	"targetType": "executable",
+	"dependencies": {
+		"vibe-d:core": "~>0.8.4",
+		"vibe-d:http": "~>0.8.4",
+		"mysql-native": "~>2.2.2"
+	},
+    "buildType": [
+		"debugInfo",
+		"optimize",
+		"releaseMode",
+		"inline"
+	],
+	"versions": ["VibeNoSSL"],
+	"description": "Project skelton for ISUCON",
+	"copyright": "Copyright © 2018, Hiroki Noda",
+	"license": "BSL-1.0"
+}
