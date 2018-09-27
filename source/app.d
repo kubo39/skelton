@@ -4,6 +4,7 @@ import vibe.http.session;
 import vibe.http.fileserver;
 import vibe.core.core;
 import vibe.core.file;
+import vibe.data.json;
 import vibe.inet.mimetypes;
 
 import mysql;
@@ -27,6 +28,17 @@ void getIndex(HTTPServerRequest req, HTTPServerResponse res)
     res.render!("index.dt");
 }
 
+void getMemstat(HTTPServerRequest req, HTTPServerResponse res)
+{
+    import core.memory;
+    size_t usedSize = GC.stats.usedSize;
+    size_t freeSize = GC.stats.freeSize;
+    Json[string] obj;
+    obj["usedSize"] = usedSize;
+    obj["freeSize"] = freeSize;
+    res.writeJsonBody(obj);
+}
+
 void main()
 {
     auto host   = environment.get("ISUCON_DB_HOST", "localhost");
@@ -40,6 +52,7 @@ void main()
 
     auto router = new URLRouter;
     router.get("/", &getIndex);
+    router.get("/memstat", &getMemstat);
 
     auto settings = new HTTPServerSettings;
     settings.port = 8080;
