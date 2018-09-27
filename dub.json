@@ -13,8 +13,7 @@
     "buildType": [
 		"debugInfo",
 		"optimize",
-		"releaseMode",
-		"inline"
+		"releaseMode"
 	],
 	"versions": ["VibeNoSSL"],
 	"description": "Project skelton for ISUCON",
